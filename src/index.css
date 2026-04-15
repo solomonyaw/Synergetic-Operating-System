@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-bg: #050508;
+  --color-surface-1: #111116;
+  --color-surface-2: #1c1c24;
+  --color-accent-primary: #00f2ff;
+  --color-accent-secondary: #7000ff;
+  --color-text-main: #e0e0e6;
+  --color-text-dim: #888899;
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-text-main font-sans antialiased;
+  }
+}
+
+.bento-grid {
+  @apply grid grid-cols-1 md:grid-cols-4 gap-4 p-6 max-w-7xl mx-auto;
+}
+
+.bento-item {
+  @apply bg-surface-1 border border-border rounded-[20px] p-6 flex flex-col relative overflow-hidden transition-all duration-300 hover:border-accent-primary/30;
+}
+
+.bento-label {
+  @apply text-[11px] uppercase tracking-[1px] text-text-dim mb-3 flex items-center gap-2;
+}
+
+.bento-label::before {
+  content: '';
+  @apply w-1.5 h-1.5 bg-accent-secondary rounded-full;
+}
+
+.item-large { @apply md:col-span-2 md:row-span-2; }
+.item-wide { @apply md:col-span-2; }
+.item-tall { @apply md:row-span-2; }
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500;
+}
+
+.terminal-box {
+  @apply font-mono text-xs text-[#6aed6a] bg-black p-4 rounded-lg flex-1 leading-relaxed;
+}
+
+.progress-bar {
+  @apply h-1 bg-surface-2 rounded-full overflow-hidden;
+}
+
+.progress-fill {
+  @apply h-full bg-accent-primary;
+}
+
+.system-status {
+  @apply text-[13px] text-accent-primary font-mono bg-accent-primary/10 px-3 py-1 rounded border border-accent-primary/20;
+}
